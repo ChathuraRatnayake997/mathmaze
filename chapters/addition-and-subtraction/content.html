@@ -1,0 +1,209 @@
+<!-- LESSON 1: MENTAL ADDITION CONTAINER -->
+<div id="addition-and-subtraction" class="lesson-container">
+    <!-- Dedicated Table of Contents Page (Page 0) -->
+    <div class="page toc-page" data-page-index="0">
+        <div class="lesson-header">
+            <span>PROJECT 01</span>
+            <h1> Adding and substracting</h1>
+        </div>
+        <h2>Chapter Contents</h2>
+        <div class="table-of-contents">
+            <ol>
+                <li><a href="#section-what-is">What are Addition & Subtraction?</a></li>
+                <li><a href="#section-intro">Addition & Subtraction in Action</a></li>
+                <li><a href="#section-revision">Chapter Revision</a></li>
+            </ol>
+        </div>
+
+        <!-- NEW: Instructional Message -->
+        <p class="toc-instruction">
+            Select a schematic above to jump directly to it, or press the button below to start from the
+            beginning.
+        </p>
+
+        <!-- NEW: "Start Chapter" Button -->
+        <div class="page-controls" style="justify-content: center; border-top: none; margin-top: 1rem;">
+            <button class="start-now-btn">Start Chapter</button>
+        </div>
+    </div>
+
+    <!-- NEW Page 1: Simple Definitions -->
+    <div class="page hidden" id="section-what-is" data-page-index="1">
+        <h2>What are Addition & Subtraction?</h2>
+        <p>These are the two most important ideas in math. Let's learn what they mean.</p>
+        <div class="vocab-focus-container">
+            <!-- Addition Card -->
+            <div class="vocab-focus-card">
+                <div class="vocab-focus-symbol">+</div>
+                <h3>Addition</h3>
+                <p>Putting numbers together to find the total.</p>
+                <h4>Other Words You Will See:</h4>
+                <ul>
+                    <li>Plus</li>
+                    <li>Add</li>
+                    <li>Sum</li>
+                </ul>
+            </div>
+            <!-- Subtraction Card -->
+            <div class="vocab-focus-card">
+                <div class="vocab-focus-symbol">-</div>
+                <h3>Subtraction</h3>
+                <p>Finding the difference between two numbers.</p>
+                <h4>Other Words You Will See:</h4>
+                <ul>
+                    <li>Minus</li>
+                    <li>Subtract</li>
+                    <li>Take Away</li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-controls">
+            <button class="nav-btn prev-page">&lt; Back to Contents</button>
+            <button class="nav-btn next-page">Next &gt;</button>
+        </div>
+    </div>
+    <!-- NEW Page 2: Interactive Equation Builder -->
+    <div class="page hidden" id="section-intro" data-page-index="2">
+        <h2>Building an Equation with Addition & Subtraction</h2>
+        <p>
+            Math is like building with blocks. You take parts (numbers) and connect them with a Addition(+) or Subtraction(-) or other mathematical symbols to get a
+            result.
+            <strong>Drag the tiles from the bottom to build an equation in the slots below. Try to Build your own equations with these blocks</strong>
+        </p>
+
+        <div class="equation-builder-container">
+            <!-- The workbench where the user builds the equation -->
+            <div id="equation-workbench">
+                <div class="equation-slot" data-slot-type="number"></div>
+                <div class="equation-slot" data-slot-type="operator"></div>
+                <div class="equation-slot" data-slot-type="number"></div>
+            </div>
+
+            <!-- The "parts bin" with draggable tiles -->
+            <div id="tile-source">
+                <div class="tile" id="tile-5" draggable="true" data-tile-type="number" data-value="5">5
+                </div>
+                <div class="tile" id="tile-plus" draggable="true" data-tile-type="operator" data-value="+">+
+                </div>
+                <div class="tile" id="tile-3" draggable="true" data-tile-type="number" data-value="3">3
+                </div>
+                <div class="tile" id="tile-8" draggable="true" data-tile-type="number" data-value="8">8
+                </div>
+                <div class="tile" id="tile-minus" draggable="true" data-tile-type="operator" data-value="-">
+                    -</div>
+                <div class="tile" id="tile-2" draggable="true" data-tile-type="number" data-value="2">2
+                </div>
+            </div>
+        </div>
+
+        <div class="page-controls">
+            <button class="nav-btn prev-page">&lt; Back to Contents</button>
+            <button class="nav-btn next-page">Next &gt;</button>
+        </div>
+    </div>
+    
+    <!-- Page 3: Interactive Revision -->
+    <div class="page hidden" id="section-revision" data-page-index="3">
+        <h2>Chapter Revision</h2>
+        <p>Let's check your understanding. Answer the questions below to test your knowledge.</p>
+
+        <div class="revision-container">
+            <!-- Question 1 -->
+            <div class="revision-question" data-question-id="q1">
+                <p class="question-text">1. Select all the words that mean <strong>ADDITION</strong>.</p>
+                <div class="vocab-checklist">
+                    <label><input type="checkbox" value="sum"> Sum</label>
+                    <label><input type="checkbox" value="minus"> Minus</label>
+                    <label><input type="checkbox" value="plus"> Plus</label>
+                    <label><input type="checkbox" value="difference"> Difference</label>
+                </div>
+                <div class="revision-controls"><button class="check-btn">Check</button><span
+                        class="feedback-text"></span></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="revision-question" data-question-id="q2">
+                <p class="question-text">2. Is this statement true or false? &nbsp; <strong>50 - 21 + 5 < 35</strong>
+                </p>
+                <div class="tf-controls">
+                    <button class="tf-btn" data-answer="true">True</button>
+                    <button class="tf-btn" data-answer="false">False</button>
+                </div>
+                <div class="revision-controls"><span class="feedback-text"></span></div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="revision-question" data-question-id="q4">
+                <p class="question-text">3. Select all the words that mean <strong>SUBTRACTION</strong>.</p>
+                <div class="vocab-checklist">
+                    <label><input type="checkbox" value="take away"> Take Away</label>
+                    <label><input type="checkbox" value="sum"> Sum</label>
+                    <label><input type="checkbox" value="plus"> Plus</label>
+                    <label><input type="checkbox" value="difference"> Difference</label>
+                </div>
+                <div class="revision-controls"><button class="check-btn">Check</button><span
+                        class="feedback-text"></span></div>
+            </div>
+            
+            <!-- Question 4 -->
+            <div class="revision-question" data-question-id="q6">
+                <p class="question-text">4. Is this statement true or false? &nbsp; <strong>11 + 19 =
+                        30</strong></p>
+                <div class="tf-controls">
+                    <button class="tf-btn" data-answer="true">True</button>
+                    <button class="tf-btn" data-answer="false">False</button>
+                </div>
+                <div class="revision-controls"><span class="feedback-text"></span></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="revision-question" data-question-id="q8">
+                <p class="question-text">5. What is the result of "<strong>36 take away 15</strong>"?</p>
+                <div class="calc-controls">
+                    <input type="number" class="answer-input" placeholder="?">
+                    <button class="check-btn">Check</button>
+                </div>
+                <div class="revision-controls"><span class="feedback-text"></span></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="revision-question" data-question-id="q9">
+                <p class="question-text">6. Is this statement true or false? &nbsp; <strong>101 - 11 < 90</strong>
+                </p>
+                <div class="tf-controls">
+                    <button class="tf-btn" data-answer="true">True</button>
+                    <button class="tf-btn" data-answer="false">False</button>
+                </div>
+                <div class="revision-controls"><span class="feedback-text"></span></div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="revision-question" data-question-id="q10">
+                <p class="question-text">7. What is the final answer?</p>
+                <p class="calc-problem">25 + 75 - 10</p>
+                <div class="calc-controls">
+                    <input type="number" class="answer-input" placeholder="?">
+                    <button class="check-btn">Check</button>
+                </div>
+                <div class="revision-controls"><span class="feedback-text"></span></div>
+            </div>
+        </div>
+
+        <!-- Final Score Area with Badge Container -->
+        <div id="revision-results" class="hidden">
+            <h3>Revision Complete!</h3>
+            <p>Your Score: <span id="score-display">0 / 7</span></p>
+            <div id="badge-container"></div>
+        </div>
+
+        <div class="page-controls">
+            <button class="nav-btn prev-page">&lt; Previous</button>
+            <div>
+                <button id="reset-revision-btn">Reset</button>
+                <button id="see-score-btn">See My Score</button>
+            </div>
+            <button class="nav-btn next-page">Next Project &gt;</button>
+        </div>
+    </div>
+
+</div>

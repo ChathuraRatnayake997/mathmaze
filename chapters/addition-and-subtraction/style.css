@@ -1,0 +1,513 @@
+/* --- Strategy Page Styling --- */
+.page {
+    line-height: 1.8;
+    font-size: 1.1em;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-light);
+}
+
+.page h2 {
+    font-family: var(--heading-font);
+    font-size: 2.2em;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.nav-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+    border-color: var(--text-light);
+}
+
+.nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* --- TOC Page Specific Styling --- */
+.toc-page {
+    justify-content: center;
+    text-align: center;
+}
+
+.toc-page h2 {
+    font-size: 2.5em;
+    margin-bottom: 2rem;
+}
+
+.table-of-contents {
+    margin: 0 auto 2rem auto;
+    max-width: 500px;
+    text-align: left;
+}
+
+.table-of-contents ol {
+    list-style-type: none;
+    counter-reset: toc-counter;
+    padding-left: 0;
+}
+
+.table-of-contents li {
+    margin-bottom: 1rem;
+    counter-increment: toc-counter;
+    font-size: 1.2em;
+    font-family: var(--heading-font);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.table-of-contents li::before {
+    content: "0" counter(toc-counter) ". ";
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-right: 1rem;
+}
+
+.table-of-contents a {
+    text-decoration: none;
+    color: var(--text-light);
+    transition: color 0.2s;
+}
+
+.table-of-contents a:hover {
+    color: var(--text-dim);
+}
+
+.toc-instruction {
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- "Start Now" Button on TOC Page --- */
+.start-now-btn {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 4px;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.start-now-btn:hover {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    border: 2px solid var(--text-light);
+    padding: calc(1rem - 2px) calc(3rem - 2px);
+}
+
+/* --- Interactive Equation Builder Styling --- */
+.equation-builder-container {
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    user-select: none;
+}
+
+#equation-workbench {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    min-height: 100px;
+}
+
+.equation-slot {
+    width: 80px;
+    height: 80px;
+    border: 3px dashed var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.equation-slot.drag-over {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-light);
+}
+
+.equation-slot.result-slot {
+    border-style: solid;
+    border-color: var(--text-light);
+    color: var(--text-light);
+    font-size: 2.5em;
+    font-family: var(--heading-font);
+    animation: pop-in 0.3s ease-out;
+}
+
+@keyframes pop-in {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#tile-source {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.tile {
+    width: 60px;
+    height: 60px;
+    background-color: var(--bg-dark);
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    border-radius: 4px;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 2em;
+    cursor: grab;
+    transition: background-color 0.2s, opacity 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile.dragging {
+    opacity: 0.4;
+    cursor: grabbing;
+}
+
+.tile.placed {
+    cursor: default;
+    border-color: var(--text-light);
+}
+
+#reset-builder-btn {
+    background: none;
+    border: 2px solid var(--text-dim);
+    color: var(--text-dim);
+    padding: 0.5rem 1rem;
+    font-family: var(--heading-font);
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 1rem;
+    transition: all 0.2s;
+}
+
+#reset-builder-btn:hover {
+    border-color: var(--text-light);
+    color: var(--text-light);
+}
+
+/* --- Vocabulary Focus Page Styling --- */
+.vocab-focus-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.vocab-focus-card {
+    flex-basis: 320px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.vocab-focus-symbol {
+    font-size: 4em;
+    font-family: var(--heading-font);
+    color: var(--text-light);
+    line-height: 1;
+}
+
+.vocab-focus-card h3 {
+    font-family: var(--heading-font);
+    font-size: 1.8em;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.vocab-focus-card p {
+    font-size: 1em;
+    color: var(--text-dim);
+    min-height: 50px;
+}
+
+.vocab-focus-card h4 {
+    font-family: var(--heading-font);
+    color: var(--text-dim);
+    font-size: 1em;
+    margin: 2rem 0 0.5rem 0;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+.vocab-focus-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vocab-focus-card li {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* --- Revision Page Styling --- */
+.revision-container {
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+.revision-question {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.question-text {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+.revision-controls {
+    margin-top: 1rem;
+    min-height: 30px;
+}
+
+.vocab-checklist {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.vocab-checklist label {
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.vocab-checklist input[type="checkbox"] {
+    accent-color: var(--text-light);
+}
+
+.vocab-checklist label:hover {
+    border-color: var(--text-light);
+}
+
+.tf-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.tf-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-grow: 1;
+}
+
+.tf-btn:hover {
+    border-color: var(--text-light);
+}
+
+.tf-btn.selected {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+}
+
+.calc-problem {
+    font-family: var(--heading-font);
+    font-size: 2em;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.calc-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.answer-input {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    padding: 12px;
+    font-size: 1.3em;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    width: 100px;
+    text-align: center;
+    font-family: var(--heading-font);
+    font-weight: 600;
+}
+
+.check-btn {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+    border: none;
+    padding: 14px 25px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--heading-font);
+    font-weight: 600;
+}
+
+.feedback-text {
+    font-family: var(--heading-font);
+    font-weight: 600;
+}
+
+.feedback-correct {
+    color: #4ade80;
+}
+
+.feedback-incorrect {
+    color: #f87171;
+}
+
+#revision-results {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--text-light);
+    border-radius: 4px;
+    text-align: center;
+}
+
+#revision-results h3 {
+    font-family: var(--heading-font);
+    font-size: 1.8em;
+    margin: 0;
+}
+
+/* --- Badge & Reset Button Styling --- */
+#reset-revision-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-dim);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-family: var(--heading-font);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 1rem;
+}
+
+#reset-revision-btn:hover {
+    border-color: var(--text-light);
+    color: var(--text-light);
+}
+
+#see-score-btn {
+    background: none;
+    border: 2px solid var(--text-light);
+    color: var(--text-light);
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-family: var(--heading-font);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#see-score-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#badge-container {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.badge {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--heading-font);
+    text-align: center;
+}
+
+.badge-icon {
+    font-size: 3em;
+    line-height: 1;
+}
+
+.badge-text {
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.badge.gold {
+    background: #e1b12c;
+    color: #fff;
+    border: 4px solid #fbc531;
+    box-shadow: 0 0 15px #fbc531;
+}
+
+.badge.platinum {
+    background: #dcdde1;
+    color: #353b48;
+    border: 4px solid #f5f6fa;
+    box-shadow: 0 0 20px #f5f6fa;
+    animation: shine-effect 2s infinite ease-in-out;
+}
+
+@keyframes shine-effect {
+    0% {
+        box-shadow: 0 0 20px #f5f6fa;
+    }
+
+    50% {
+        box-shadow: 0 0 35px #ffffff;
+    }
+
+    100% {
+        box-shadow: 0 0 20px #f5f6fa;
+    }
+}
