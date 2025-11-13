@@ -1,0 +1,331 @@
+/* --- "MONOCHROME BLUEPRINT" THEME --- */
+:root {
+    --bg-dark: #111111;
+    --bg-panel: #1a1a1a;
+    --text-light: #f5f5f5;
+    --text-dim: #888888;
+    --border-color: #444444;
+    --heading-font: 'Chakra Petch', sans-serif;
+    --body-font: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 3rem;
+    box-sizing: border-box;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.math-hub {
+    display: flex;
+    width: 100%;
+    height: 85vh;
+    gap: 2rem;
+}
+
+/* --- Left Navigation Panel (Project Index) --- */
+.lesson-panel {
+    flex-basis: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-panel h2 {
+    font-family: var(--heading-font);
+    color: var(--text-light);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.lesson-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-family: var(--heading-font);
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.lesson-btn:hover {
+    border-color: var(--text-light);
+}
+
+.lesson-btn.active {
+    background-color: var(--text-light);
+    border-color: var(--text-light);
+    color: var(--bg-dark);
+    font-weight: 700;
+}
+
+.lesson-btn span {
+    font-family: var(--body-font);
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* --- Right Content Display (The Blueprint Sheet) --- */
+.lesson-display {
+    flex-grow: 1;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 3rem 4rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.lesson-header h1 {
+    font-family: var(--heading-font);
+    font-size: 2.5em;
+    color: var(--text-light);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.lesson-header span {
+    color: var(--text-dim);
+    letter-spacing: 2px;
+}
+
+/* --- Page Controls (Bottom) --- */
+.page-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Game Modal Styling (GLOBAL) --- */
+#game-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-modal {
+    background-color: var(--bg-panel);
+    padding: 2.5rem;
+    border-radius: 4px;
+    border: 2px solid var(--text-light);
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+#close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: color 0.2s;
+}
+
+#close-modal-btn:hover {
+    color: var(--text-light);
+}
+
+#game-content h2 {
+    font-size: 2em;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+    text-align: center;
+    font-family: var(--heading-font);
+}
+
+#game-content .game-p {
+    font-family: var(--body-font);
+    color: var(--text-dim);
+    text-align: center;
+    margin: 0.5rem 0 1.5rem;
+    font-size: 1.1em;
+}
+
+#equation-workspace {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px auto;
+    font-size: clamp(1.3em, 3vw, 2em);
+    font-weight: 700;
+    text-align: center;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.equation-step {
+    padding: 8px 0;
+    animation: fadeIn 0.5s ease-out;
+}
+
+#equation-workspace .token {
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 0 4px;
+}
+
+#equation-workspace .num {
+    background-color: var(--border-color);
+    color: var(--bg-dark);
+}
+
+#equation-workspace .op {
+    color: var(--text-light);
+}
+
+#equation-workspace .group {
+    background: none;
+    border: 2px solid var(--text-light);
+    color: var(--text-light);
+}
+
+#equation-workspace .result {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+}
+
+#input-area {
+    margin-top: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#user-answer {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    padding: 12px;
+    font-size: 1.3em;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    width: 150px;
+    text-align: center;
+    font-family: var(--heading-font);
+    font-weight: 600;
+}
+
+#submit-btn {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+    border: none;
+    padding: 14px 25px;
+    font-size: 1.1em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--heading-font);
+    font-weight: 700;
+}
+
+#feedback {
+    font-weight: 700;
+    height: 24px;
+    margin-top: 15px;
+    font-family: var(--heading-font);
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.success,
+.error {
+    color: var(--text-light);
+}
+
+#game-controls {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#game-controls button {
+    background: none;
+    color: var(--text-light);
+    border: 2px solid var(--border-color);
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    flex: 1;
+}
+
+#game-controls button:hover {
+    border-color: var(--text-light);
+}
+
+#game-controls button#next-problem-btn {
+    background-color: var(--text-light);
+    border-color: var(--text-light);
+    color: var(--bg-dark);
+}
+

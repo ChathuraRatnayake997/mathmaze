@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Math Blueprint [Monochrome Edition]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Chakra+Petch:wght@600;700&display=swap"
+        rel="stylesheet">
+    <!-- Main global stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Placeholder for chapter-specific stylesheet -->
+    <link id="chapter-style" rel="stylesheet" href="">
+</head>
+
+<body>
+    <div class="math-hub">
+        <aside class="lesson-panel">
+            <h2>PROJECT INDEX</h2>
+            <!-- These buttons now point to the folder name of the chapter -->
+            <button class="lesson-btn" data-lesson-id="fundamentals">
+                U-01: Fundamentals<span>// 1 Schematic</span>
+            </button>
+            <button class="lesson-btn active" data-lesson-id="addition-and-subtraction">
+                U-02: Adding and substracting<span>// 3 Calculation Schematics</span>
+            </button>
+            <button class="lesson-btn" data-lesson-id="multiplying-and-dividing">
+                U-03: Multiplying and Dividing<span>// 1 Schematic</span>
+            </button>
+        </aside>
+
+        <!-- This is now an empty container where chapters will be loaded -->
+        <main class="lesson-display"></main>
+
+    </div>
+
+    <!-- The Game Modal remains here as it is a global component -->
+    <div id="game-modal-overlay" class="hidden"></div>
+
+    <!-- The main script that handles chapter loading -->
+    <script src="script.js"></script>
+</body>
+
+</html>
