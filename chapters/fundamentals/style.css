@@ -1,0 +1,1116 @@
+/* --- Variables and Basic Setup --- */
+:root {
+    --bg-dark: #1a1a2e;
+    --bg-med: #24243e;
+    --border-color: #4a4a6a;
+    --text-light: #e0e0ff;
+    --text-dim: #9a9ac8;
+    --feedback-correct: #4ade80;
+    --feedback-incorrect: #f87171;
+    --heading-font: 'Arial', sans-serif;
+    --body-font: 'Georgia', serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--body-font);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-image: radial-gradient(circle at top, var(--bg-med), var(--bg-dark));
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+}
+
+/* --- General Page Styling --- */
+.page {
+    line-height: 1.8;
+    font-size: 1.1em;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-light);
+    /* --- FIX: This padding creates a universal 2rem space at the bottom of every page, above the controls. --- */
+    padding-bottom: 2rem;
+}
+
+.page.hidden {
+    display: none;
+}
+
+.page h1,
+.page h2 {
+    font-family: var(--heading-font);
+    text-align: center;
+    color: var(--text-light);
+    text-shadow: 0 0 10px rgba(224, 224, 255, 0.2);
+    letter-spacing: 1px;
+}
+
+.page h1 {
+    font-size: 3em;
+    margin: 0 0 0.5rem 0;
+}
+
+.page h2 {
+    font-size: 2.2em;
+    margin: 0 0 1.5rem 0;
+}
+
+.page h3 {
+    font-size: 1.5em;
+    margin: 2rem 0 1rem 0;
+    font-family: var(--heading-font);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.page-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    margin-top: auto;
+}
+
+.nav-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-btn:hover:not(:disabled) {
+    border-color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* --- TOC Page --- */
+.toc-page {
+    justify-content: center;
+    text-align: center;
+}
+
+.toc-page h2 {
+    font-size: 2.5em;
+    margin-bottom: 2rem;
+}
+
+.table-of-contents {
+    margin: 0 auto 2rem auto;
+    max-width: 550px;
+    text-align: left;
+}
+
+.table-of-contents ol {
+    list-style-type: none;
+    counter-reset: toc-counter;
+    padding-left: 0;
+}
+
+.table-of-contents li {
+    margin-bottom: 0.5rem;
+    counter-increment: toc-counter;
+    font-size: 1.2em;
+    font-family: var(--heading-font);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.table-of-contents li:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.table-of-contents li::before {
+    content: "0" counter(toc-counter) ". ";
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-right: 1rem;
+}
+
+.table-of-contents a {
+    text-decoration: none;
+    color: var(--text-light);
+    transition: color 0.2s;
+}
+
+.table-of-contents a:hover {
+    color: var(--text-dim);
+}
+
+.toc-instruction {
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+}
+
+.start-now-btn {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+    border: 2px solid var(--text-light);
+    padding: 1rem 3rem;
+    border-radius: 6px;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.start-now-btn:hover {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    padding: 1rem 3rem;
+}
+
+/* --- Interactive Block Wrapper --- */
+.interactive-block {
+    margin: 2rem 0;
+    padding: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    user-select: none;
+    box-shadow: inset 0 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Page 1: Natural Numbers Quiz (REFERENCE LAYOUT) --- */
+.quiz-question {
+    font-family: var(--heading-font);
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.quiz-answers {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.quiz-answer-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    flex-grow: 1;
+    max-width: 180px;
+}
+
+.quiz-answer-btn:hover:not(:disabled) {
+    border-color: var(--text-light);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-answer-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.quiz-feedback {
+    font-weight: 600;
+    min-height: 24px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.quiz-feedback.correct {
+    color: var(--feedback-correct);
+}
+
+.quiz-feedback.incorrect {
+    color: var(--feedback-incorrect);
+}
+
+.quiz-controls {
+    margin-top: 1rem;
+    min-height: 45px;
+    text-align: center;
+}
+
+.quiz-next-btn {
+    background: none;
+    border: 2px solid var(--text-dim);
+    color: var(--text-dim);
+    padding: 0.5rem 1rem;
+    font-family: var(--heading-font);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: none;
+}
+
+.quiz-next-btn:hover {
+    border-color: var(--text-light);
+    color: var(--text-light);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+/* --- Page 2: Whole Numbers Interactive --- */
+.interactive-set-container {
+    text-align: center;
+}
+
+#set-label {
+    font-family: var(--heading-font);
+    font-size: 1.3em;
+    color: var(--text-dim);
+}
+
+.number-set {
+    width: 100%;
+    min-height: 90px;
+    border: 3px dashed var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transition: border-color 0.2s, background-color 0.2s;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+.set-number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--bg-dark);
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    border-radius: 6px;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.set-number:hover {
+    transform: scale(1.05);
+}
+
+#zero-container {
+    min-height: 64px;
+}
+
+.toggle-zero-btn {
+    background: none;
+    border: 2px solid var(--text-dim);
+    color: var(--text-dim);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--heading-font);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    margin-top: 2rem;
+}
+
+.toggle-zero-btn:hover {
+    border-color: var(--text-light);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Page 3: Factor Finder Game --- */
+.factor-target {
+    font-size: 1.3em;
+    margin-bottom: 1.5rem;
+    font-family: var(--heading-font);
+    text-align: center;
+}
+
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.grid-number {
+    background-color: var(--bg-dark);
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    aspect-ratio: 1 / 1;
+    border-radius: 6px;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-number:hover {
+    border-color: var(--text-light);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+.grid-number.selected {
+    border-color: var(--text-light);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.grid-number.correct {
+    background-color: var(--feedback-correct);
+    border-color: var(--feedback-correct);
+    color: var(--bg-dark);
+    transform: scale(1.1);
+}
+
+.grid-number.incorrect {
+    background-color: var(--feedback-incorrect);
+    border-color: var(--feedback-incorrect);
+    color: var(--bg-dark);
+    opacity: 0.6;
+    transform: scale(0.9);
+}
+
+.grid-number.missed {
+    border-color: #e1b12c;
+    animation: pulse 1.5s infinite;
+}
+
+.factor-feedback {
+    font-weight: 600;
+    min-height: 24px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.factor-feedback.correct {
+    color: var(--feedback-correct);
+}
+
+.factor-feedback.incorrect {
+    color: var(--feedback-incorrect);
+}
+
+.factor-controls {
+    margin-top: 1rem;
+    min-height: 45px;
+    text-align: center;
+}
+
+.factor-btn {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+    border: 2px solid var(--text-light);
+    padding: 14px 25px;
+    font-size: 1em;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.factor-btn:hover {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(225, 177, 44, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(225, 177, 44, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(225, 177, 44, 0);
+    }
+}
+
+/* --- Page 4: Prime Sorter Game --- */
+#sorter-start-screen,
+#sorter-game-over-screen {
+    text-align: center;
+}
+
+.sorter-title {
+    font-size: 1.8em;
+    margin-bottom: 1rem;
+}
+
+#sorter-game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sorter-hud {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.sorter-number-area {
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sorter-number-display {
+    width: 100px;
+    height: 100px;
+    border: 3px solid var(--text-light);
+    color: var(--text-light);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-family: var(--heading-font);
+    box-shadow: 0 0 20px rgba(224, 224, 255, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#sorter-number-display.entering {
+    animation: pop-in 0.3s ease-out;
+}
+
+.sorter-bins {
+    display: flex;
+    gap: 1rem;
+}
+
+.sorter-bin {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    flex-grow: 1;
+}
+
+.sorter-bin:hover:not(:disabled) {
+    border-color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sorter-bin:disabled {
+    opacity: 0.5;
+}
+
+.sorter-restart-btn {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+    border: 2px solid var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 2rem;
+}
+
+.sorter-restart-btn:hover {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Feedback Animations */
+.sorter-bin.correct-flash {
+    animation: flash-correct 0.5s ease;
+}
+
+.sorter-bin.incorrect-flash {
+    animation: flash-incorrect 0.5s ease;
+}
+
+@keyframes pop-in {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes flash-correct {
+    50% {
+        background-color: var(--feedback-correct);
+        color: var(--bg-dark);
+        border-color: var(--feedback-correct);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes flash-incorrect {
+    25% {
+        transform: translateX(5px);
+    }
+
+    50% {
+        background-color: var(--feedback-incorrect);
+        color: var(--bg-dark);
+        border-color: var(--feedback-incorrect);
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* --- Page 5: Integers Section --- */
+
+/* --- Opposites Stepper Interactive --- */
+.stepper-interactive {
+    text-align: center;
+}
+
+.stepper-track {
+    height: 40px;
+    width: 90%;
+    margin: 2.5rem auto 1rem auto;
+    /* More top margin for feedback text */
+    border-bottom: 3px solid var(--border-color);
+    position: relative;
+}
+
+#stepper-character {
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-light);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.4s ease-in-out;
+    box-shadow: 0 0 10px rgba(224, 224, 255, 0.7);
+}
+
+/* IMPROVEMENT: Styling for the floating feedback text */
+#stepper-feedback-text {
+    position: absolute;
+    bottom: 20px;
+    /* Start above the character */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--heading-font);
+    font-size: 1.8em;
+    font-weight: 700;
+    opacity: 0;
+    pointer-events: none;
+    /* Can't be clicked */
+}
+
+#stepper-feedback-text.show {
+    animation: float-up-and-fade 0.8s ease-out forwards;
+}
+
+#stepper-feedback-text.correct {
+    color: var(--feedback-correct);
+}
+
+#stepper-feedback-text.incorrect {
+    color: var(--feedback-incorrect);
+}
+
+@keyframes float-up-and-fade {
+    from {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50%, -40px);
+    }
+}
+
+.stepper-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    margin: 1.5rem auto 0 auto;
+}
+
+#stepper-position-display {
+    font-family: var(--heading-font);
+    font-size: 1.5em;
+    font-weight: 700;
+    width: 150px;
+    text-align: center;
+}
+
+.stepper-reset-container {
+    margin-top: 1.5rem;
+}
+
+/* --- Number Line Game --- */
+#target-number-display {
+    color: var(--feedback-correct);
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.number-line-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 3rem 0;
+    position: relative;
+    background: var(--border-color);
+    height: 3px;
+    transition: background-color 0.2s;
+}
+
+/* IMPROVEMENT: Success flash on the number line */
+.number-line-container.success-flash {
+    background: var(--feedback-correct);
+}
+
+.number-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transform: translateX(-50%);
+    transition: transform 0.2s ease;
+}
+
+/* IMPROVEMENT: Shake animation for wrong clicks */
+.number-marker.shake {
+    animation: shake-horizontal 0.5s ease-in-out;
+}
+
+.number-marker::before {
+    content: '';
+    width: 3px;
+    height: 20px;
+    background-color: var(--border-color);
+    position: absolute;
+    top: -8.5px;
+    transition: all 0.2s ease;
+}
+
+.number-marker.zero::before {
+    height: 30px;
+    top: -13.5px;
+}
+
+.number-marker:hover::before {
+    background-color: var(--text-light);
+}
+
+.number-marker span {
+    margin-top: 25px;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    font-size: 1.2em;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.number-marker:hover span {
+    color: var(--text-light);
+}
+
+/* IMPROVEMENT: Pulse animation for the correct answer */
+.number-marker.correct-answer::before {
+    animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+    }
+}
+
+@keyframes shake-horizontal {
+
+    10%,
+    90% {
+        transform: translateX(-5px) scale(1);
+    }
+
+    20%,
+    80% {
+        transform: translateX(5px) scale(1);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translateX(-5px) scale(1);
+    }
+
+    40%,
+    60% {
+        transform: translateX(5px) scale(1);
+    }
+}
+
+/* --- Page 6: Understanding Fractions Section --- */
+.intro-list {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.intro-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.intro-list li::before {
+    content: '▶';
+    color: var(--text-dim);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* --- Game 1: Pizza Shop --- */
+.pizza-shop-game {
+    text-align: center;
+}
+
+#pizza-order-text {
+    font-size: 1.3em;
+    margin-bottom: 1rem;
+}
+
+#pizza-order-text strong {
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+/* Monochrome */
+.pizza-workspace {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+#pizza-visual-container {
+    width: 250px;
+    height: 250px;
+}
+
+.pizza-slice {
+    stroke: var(--bg-dark);
+    stroke-width: 4;
+    fill: var(--border-color);
+    cursor: pointer;
+    transition: fill 0.2s ease;
+}
+
+.pizza-slice:hover {
+    fill: #9a9ac8;
+}
+
+/* Monochrome hover */
+.pizza-slice.selected {
+    fill: var(--text-light);
+}
+
+/* Monochrome selected */
+.pizza-controls {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* --- Game 2: Fraction Simplifier --- */
+.fraction-simplifier-game {
+    text-align: center;
+}
+
+#simplifier-fraction-display {
+    width: 150px;
+    margin: 0.5rem auto 1.5rem auto;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+#simplifier-fraction-display.simplified {
+    color: var(--text-light);
+}
+
+/* Monochrome */
+#simplifier-fraction-display span {
+    font-size: 4em;
+    display: block;
+}
+
+#simplifier-fraction-display hr {
+    border: 2.5px solid var(--border-color);
+    margin: 0;
+    transition: border-color 0.3s;
+}
+
+#simplifier-fraction-display.simplified hr {
+    border-color: var(--text-light);
+}
+
+/* Monochrome */
+#divisor-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.divisor-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-light);
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    font-family: var(--heading-font);
+    font-weight: 600;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.divisor-btn:hover:not(:disabled) {
+    border-color: var(--text-light);
+    transform: scale(1.05);
+}
+
+/* --- Game 3: Fraction Number Line Challenge --- */
+.number-line-challenge {
+    text-align: center;
+}
+
+#nlc-challenge-fraction {
+    font-size: 1.5em;
+    color: var(--text-light);
+    font-family: var(--heading-font);
+}
+
+/* Monochrome */
+#nlc-line-container {
+    width: 100%;
+    height: 5px;
+    background-color: var(--border-color);
+    margin: 4rem auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nlc-tick {
+    width: 3px;
+    height: 25px;
+    background-color: var(--border-color);
+    position: absolute;
+    top: -10px;
+}
+
+.nlc-tick-label {
+    position: absolute;
+    top: 20px;
+    transform: translateX(-50%);
+    font-family: var(--heading-font);
+}
+
+.nlc-marker {
+    width: 30px;
+    height: 30px;
+    background-color: var(--bg-med);
+    border: 2px solid var(--text-dim);
+    border-radius: 50%;
+    position: absolute;
+    top: -12.5px;
+    font-family: var(--heading-font);
+    color: var(--text-dim);
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+}
+
+#nlc-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.nlc-option-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5em;
+    padding: 0;
+}
+
+/* --- NEW Game 4: Fraction Showdown --- */
+.fraction-showdown-game {
+    text-align: center;
+}
+
+.showdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.showdown-option {
+    border: 3px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-width: 170px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.showdown-option:hover {
+    transform: translateY(-8px);
+    border-color: var(--text-dim);
+}
+
+.showdown-text {
+    font-family: var(--heading-font);
+    font-size: 2em;
+    font-weight: 700;
+    margin-top: auto;
+}
+
+/* Monochrome Feedback for Showdown Game */
+.showdown-option.correct-choice {
+    border-color: var(--text-light);
+    box-shadow: 0 0 15px var(--text-light);
+    transform: scale(1.05);
+}
+
+.showdown-option.incorrect-choice {
+    opacity: 0.5;
+}
+
+.showdown-option.correct-answer-highlight {
+    border-color: var(--text-light);
+}
+
+/* --- Universal Fraction Bar Visualizer Styling --- */
+.fraction-bar-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.fraction-bar-container.small {
+    gap: 5px;
+}
+
+.bar-whole {
+    width: 100%;
+    height: 25px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+}
+
+.fraction-bar-container.small .bar-whole {
+    height: 20px;
+}
+
+.bar-segment {
+    height: 100%;
+    border-right: 1px solid var(--bg-med);
+}
+
+.bar-segment:last-child {
+    border-right: none;
+}
+
+.bar-segment.shaded {
+    background-color: var(--text-light);
+}
+
+/* Monochrome */

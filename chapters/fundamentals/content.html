@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentals of Numbers</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <main id="fundamentals" class="lesson-container">
+        <!-- Page 0: Table of Contents -->
+        <div class="page toc-page" data-page-index="0">
+            <h1>Fundamentals</h1>
+            <h2>Chapter Contents</h2>
+            <div class="table-of-contents">
+                <ol>
+                    <li><a href="#section-natural-numbers">Natural Numbers</a></li>
+                    <li><a href="#section-whole-numbers">Whole Numbers</a></li>
+                    <li><a href="#section-factors">Factors</a></li>
+                    <li><a href="#section-prime-composite">Prime & Composite Numbers</a></li>
+                    <li><a href="#section-integers">Integers (Positive & Negative)</a></li>
+                    <li><a href="#section-fractions">Fractions</a></li>
+                </ol>
+            </div>
+            <p class="toc-instruction">Select a topic to jump to it, or start from the beginning below.</p>
+            <div class="page-controls" style="justify-content: center; border-top: none; margin-top: 1rem;">
+                <button class="start-now-btn">Start Chapter</button>
+            </div>
+        </div>
+
+        <!-- Page 1: Natural Numbers -->
+        <div class="page hidden" id="section-natural-numbers" data-page-index="1">
+            <h2>Natural Numbers</h2>
+            <p><strong>Simple Definition:</strong> "The numbers you use to count things." (1, 2, 3, ...)</p>
+            <h3>Test Your Knowledge</h3>
+            <div class="quiz-container interactive-block">
+                <div class="quiz-question-wrapper">
+                    <p class="quiz-question" id="quiz-question-text">Loading question...</p>
+                </div>
+                <div class="quiz-answers" id="quiz-answer-buttons">
+                    <button class="quiz-answer-btn" data-answer="true">Yes</button>
+                    <button class="quiz-answer-btn" data-answer="false">No</button>
+                </div>
+                <div class="quiz-feedback" id="quiz-feedback"></div>
+                <div class="quiz-controls"><button class="quiz-next-btn" id="quiz-next-btn">Next Question</button></div>
+            </div>
+            <div class="page-controls">
+                <button class="nav-btn prev-page">&lt; Back to Contents</button>
+                <button class="nav-btn next-page">Next &gt;</button>
+            </div>
+        </div>
+
+        <!-- Page 2: Whole Numbers -->
+        <div class="page hidden" id="section-whole-numbers" data-page-index="2">
+            <h2>Whole Numbers</h2>
+            <p><strong>Simple Definition:</strong> "All the counting numbers, starting from zero." (0, 1, 2, 3, ...)</p>
+            <h3>The Only Difference</h3>
+            <div class="interactive-set-container interactive-block">
+                <div id="zero-container">
+                    <div class="set-number" id="zero-element">0</div>
+                </div>
+                <div class="number-set-wrapper">
+                    <h4 id="set-label">Natural Numbers</h4>
+                    <div class="number-set" id="number-set-target">
+                        <div class="set-number">1</div>
+                        <div class="set-number">2</div>
+                        <div class="set-number">3</div>
+                        <div class="set-number">...</div>
+                    </div>
+                </div>
+                <button class="toggle-zero-btn" id="toggle-zero-btn">Add 0 to the Set</button>
+            </div>
+            <div class="page-controls">
+                <button class="nav-btn prev-page">&lt; Previous</button>
+                <button class="nav-btn next-page">Next &gt;</button>
+            </div>
+        </div>
+
+        <!-- Page 3: Factors -->
+        <div class="page hidden" id="section-factors" data-page-index="3">
+            <h2>Factors</h2>
+            <p><strong>Simple Definition:</strong> "The numbers that divide evenly into another number."</p>
+            <h3>Factor Finder Game</h3>
+            <div class="factor-finder-game interactive-block">
+                <h4 class="factor-target">Find the factors of <span id="target-number">18</span></h4>
+                <div class="number-grid" id="number-grid"></div>
+                <div class="factor-feedback" id="factor-feedback"></div>
+                <div class="factor-game-controls">
+                    <button class="factor-btn" id="check-factors-btn">Check Factors</button>
+                    <button class="factor-btn" id="new-number-btn" style="display: none;">New Number</button>
+                </div>
+            </div>
+            <div class="page-controls">
+                <button class="nav-btn prev-page">&lt; Previous</button>
+                <button class="nav-btn next-page">Next &gt;</button>
+            </div>
+        </div>
+
+        <!-- Page 4: Prime & Composite Numbers with NEW GAME -->
+        <div class="page hidden" id="section-prime-composite" data-page-index="4">
+            <h2>Prime & Composite Numbers</h2>
+            <p><strong>Prime:</strong> Has exactly two factors (1 and itself). <strong>Composite:</strong> Has more than
+                two factors.</p>
+            <h3>Test Your Skills: Prime Sorter</h3>
+
+            <!-- START: Prime Sorter Game -->
+            <div class="prime-sorter-game interactive-block">
+                <div id="sorter-start-screen">
+                    <h4 class="sorter-title">Prime Sorter</h4>
+                    <p>Sort the numbers into the correct bins before time runs out!</p>
+                    <button class="factor-btn" id="sorter-start-btn">Start Sorting</button>
+                </div>
+                <div id="sorter-game-over-screen" class="hidden">
+                    <h4 class="sorter-title">Game Over</h4>
+                    <p>Final Score: <span id="sorter-final-score">0</span></p>
+                    <button class="factor-btn" id="sorter-restart-btn">Play Again</button>
+                </div>
+                <div id="sorter-game-area" class="hidden">
+                    <div class="sorter-hud">
+                        <div>Score: <span id="sorter-score">0</span></div>
+                        <div>Lives: <span id="sorter-lives">❤️❤️❤️</span></div>
+                    </div>
+                    <div class="sorter-number-area">
+                        <div id="sorter-number-display"></div>
+                    </div>
+                    <div class="sorter-bins">
+                        <button class="sorter-bin" id="prime-bin" data-type="prime">Prime</button>
+                        <button class="sorter-bin" id="composite-bin" data-type="composite">Composite</button>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Prime Sorter Game -->
+            <div class="page-controls">
+                <button class="nav-btn prev-page">&lt; Previous</button>
+                <button class="nav-btn next-page">Next Project &gt;</button>
+            </div>
+        </div>
+
+        <!-- Page 5: Integers (Positive & Negative Numbers) -->
+        <div class="page hidden" id="section-integers" data-page-index="5">
+            <h2>Integers: Positive & Negative</h2>
+            <p>
+                We've used numbers to count things, but what about representing opposites, like a step backward or a
+                temperature below zero? For that, we use <strong>integers</strong>.
+            </p>
+
+            <!-- START: Opposites Stepper -->
+            <h3>The Concept of "Opposites"</h3>
+            <p>
+                Every positive number has an opposite: a negative number. Think of it as a step forward (+1) and a step
+                backward (-1). Let's see this in action.
+            </p>
+            <div class="stepper-interactive interactive-block">
+                <div class="stepper-track">
+                    <div id="stepper-character"></div>
+                    <!-- NEW: Element for floating feedback text -->
+                    <div id="stepper-feedback-text"></div>
+                </div>
+                <div class="stepper-controls">
+                    <button id="step-back-btn" class="nav-btn">&larr; Step Backward (-1)</button>
+                    <span id="stepper-position-display">Position: 0</span>
+                    <button id="step-forward-btn" class="nav-btn">Step Forward (+1) &rarr;</button>
+                </div>
+                <div class="stepper-reset-container">
+                    <button id="stepper-reset-btn" class="factor-btn">Reset Position</button>
+                </div>
+            </div>
+            <!-- END: Opposites Stepper -->
+
+            <!-- START: Number Line Game -->
+            <h3>The Number Line: Your Best Tool</h3>
+            <p>
+                A number line is perfect for visualizing integers. Test your skills by finding the correct number on the
+                line.
+            </p>
+            <div class="number-line-game interactive-block">
+                <div id="number-line-challenge" class="quiz-question">
+                    <span>Click on the number: </span>
+                    <span id="target-number-display"></span>
+                </div>
+
+                <div class="number-line-container" id="number-line-container">
+                    <!-- JS generates the number line here -->
+                </div>
+
+                <div id="number-line-feedback" class="quiz-feedback"></div>
+            </div>
+            <!-- END: Number Line Game -->
+
+            <div class="page-controls">
+                <button class="nav-btn prev-page">&lt; Previous</button>
+                <button class="nav-btn next-page">Next &gt;</button>
+            </div>
+        </div>
+        <!-- Page 6: Understanding Fractions -->
+        <div class="page hidden" id="section-fractions" data-page-index="6">
+            <h2>Understanding Fractions</h2>
+            <p>
+                A fraction represents <strong>equal parts of a whole</strong>. It has two main parts:
+            </p>
+            <ul class="intro-list">
+                <li>The <strong>Numerator</strong> (top number): How many parts you have.</li>
+                <li>The <strong>Denominator</strong> (bottom number): How many equal parts the whole is divided into.
+                </li>
+            </ul>
+            <p>
+                Let's practice identifying, simplifying, and comparing fractions with these games!
+            </p>
+
+            <!-- GAME 1: The Fraction Pizza Shop -->
+            <h3>Game 1: The Fraction Pizza Shop</h3>
+            <p>
+                This game teaches <strong>equivalent fractions</strong>. Fulfill customer orders by shading the correct
+                number of slices to see how different fractions can be equal.
+            </p>
+            <div class="pizza-shop-game interactive-block">
+                <div id="pizza-order-text" class="quiz-question">Your first order is coming up...</div>
+                <div class="pizza-workspace">
+                    <div id="pizza-visual-container"></div>
+                </div>
+                <div id="pizza-feedback" class="quiz-feedback"></div>
+                <div class="pizza-controls">
+                    <button id="submit-pizza-btn" class="factor-btn">Serve Pizza</button>
+                    <button id="new-pizza-order-btn" class="nav-btn">New Order</button>
+                </div>
+            </div>
+
+            <!-- GAME 2: Fraction Simplifier -->
+            <h3>Game 2: Fraction Simplifier</h3>
+            <p>
+                To simplify a fraction, divide the top and bottom by the largest number that goes into both. Find that
+                number to simplify the fraction below!
+            </p>
+            <div class="fraction-simplifier-game interactive-block">
+                <div id="simplifier-question" class="quiz-question">Simplify this fraction:</div>
+                <div id="simplifier-fraction-display">
+                    <span id="simp-numerator">8</span>
+                    <hr><span id="simp-denominator">12</span>
+                </div>
+                <div id="divisor-buttons"></div>
+                <div id="simplifier-feedback" class="quiz-feedback"></div>
+            </div>
+
+            <!-- GAME 3: Fraction Number Line Challenge -->
+            <h3>Game 3: Fraction Number Line Challenge</h3>
+            <p>
+                A number line is a great tool for comparing fractions. Can you find the correct position for the
+                fraction shown below? Click the letter that matches.
+            </p>
+            <div class="number-line-challenge interactive-block">
+                <div id="nlc-challenge-text" class="quiz-question">
+                    Find the position of: <span id="nlc-challenge-fraction">3/4</span>
+                </div>
+                <div id="nlc-line-container"></div>
+                <div id="nlc-options"></div>
+                <div id="nlc-feedback" class="quiz-feedback"></div>
+            </div>
+
+            <!-- NEW GAME 4: Fraction Showdown -->
+            <h3>Game 4: Fraction Showdown</h3>
+            <p>
+                It's a showdown! Two fractions will appear. Click on the one you think has the <strong>greater
+                    value</strong> to win the round.
+            </p>
+            <div class="fraction-showdown-game interactive-block">
+                <div class="showdown-container">
+                    <div class="showdown-option" id="showdown-left">
+                        <div id="showdown-visual-left" class="fraction-bar-container small"></div>
+                        <div id="showdown-text-left" class="showdown-text"></div>
+                    </div>
+                    <div class="vs-text">VS</div>
+                    <div class="showdown-option" id="showdown-right">
+                        <div id="showdown-visual-right" class="fraction-bar-container small"></div>
+                        <div id="showdown-text-right" class="showdown-text"></div>
+                    </div>
+                </div>
+                <div id="showdown-feedback" class="quiz-feedback"></div>
+            </div>
+
+            <div class="page-controls">
+                <button class="nav-btn prev-page">&lt; Previous</button>
+                <button class="nav-btn next-page">Next &gt;</button>
+            </div>
+        </div>
+</body>
+
+</html>
