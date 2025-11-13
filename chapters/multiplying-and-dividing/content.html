@@ -1,0 +1,97 @@
+<!-- chapters/multiplying-and-dividing/content.html -->
+
+<div id="lesson-multiplying-and-dividing" class="lesson-container">
+    <!-- Dedicated Table of Contents Page (Page 0) -->
+    <div class="page toc-page" data-page-index="0">
+        <div class="lesson-header">
+            <span>PROJECT 03</span>
+            <h1>Multiplying and Dividing</h1>
+        </div>
+        <h2>Chapter Contents</h2>
+        <div class="table-of-contents">
+            <ol>
+                <li><a href="#section-what-is-md">What are Multiplication & Division?</a></li>
+                <li><a href="#section-md-builder">Equation Builder</a></li>
+                <!-- Future lessons for this chapter will be added here -->
+            </ol>
+        </div>
+        <p class="toc-instruction">
+            Select a schematic above to jump directly to it, or press the button below to start from the
+            beginning.
+        </p>
+        <div class="page-controls" style="justify-content: center; border-top: none; margin-top: 1rem;">
+            <button class="start-now-btn">Start Chapter</button>
+        </div>
+    </div>
+
+    <!-- Page 1: What are Multiplication & Division? -->
+    <div class="page hidden" id="section-what-is-md" data-page-index="1">
+        <h2>What are Multiplication & Division?</h2>
+        <p>These powerful schematics allow for rapid calculation of large numbers.</p>
+        <div class="vocab-focus-container">
+            <!-- Multiplication Card -->
+            <div class="vocab-focus-card">
+                <div class="vocab-focus-symbol">×</div>
+                <h3>Multiplication</h3>
+                <p>Repeatedly adding a number to itself a certain number of times.</p>
+                <h4>Other Words You Will See:</h4>
+                <ul>
+                    <li>Times</li>
+                    <li>Multiply</li>
+                    <li>Product</li>
+                </ul>
+            </div>
+            <!-- Division Card -->
+            <div class="vocab-focus-card">
+                <div class="vocab-focus-symbol">÷</div>
+                <h3>Division</h3>
+                <p>Splitting a number into equal parts or groups.</p>
+                <h4>Other Words You Will See:</h4>
+                <ul>
+                    <li>Goes Into</li>
+                    <li>Divide</li>
+                    <li>Quotient</li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-controls">
+            <button class="nav-btn prev-page">&lt; Back to Contents</button>
+            <button class="nav-btn next-page" disabled>Next &gt;</button>
+        </div>
+    </div>
+    <!-- Page 2: Interactive Equation Builder -->
+    <div class="page hidden" id="section-md-builder" data-page-index="2">
+        <h2>Building an Equation</h2>
+        <p>
+            Just like before, you can build equations. These schematics use different operators.
+            <strong>Drag the tiles from the bottom to build an equation in the slots below.</strong>
+        </p>
+
+        <div class="equation-builder-container">
+            <!-- The workbench where the user builds the equation -->
+            <!-- Note the unique ID and the reusable class -->
+            <div id="md-equation-workbench" class="equation-workbench">
+                <div class="equation-slot" data-slot-type="number"></div>
+                <div class="equation-slot" data-slot-type="operator"></div>
+                <div class="equation-slot" data-slot-type="number"></div>
+            </div>
+
+            <!-- The "parts bin" with draggable tiles -->
+            <!-- Note the unique ID and the reusable class -->
+            <div id="md-tile-source" class="tile-source">
+                <div class="tile" id="md-tile-12" draggable="true" data-tile-type="number" data-value="12">12</div>
+                <div class="tile" id="md-tile-times" draggable="true" data-tile-type="operator" data-value="×">×</div>
+                <div class="tile" id="md-tile-3" draggable="true" data-tile-type="number" data-value="2">2</div>
+                <div class="tile" id="md-tile-36" draggable="true" data-tile-type="number" data-value="36">36</div>
+                <div class="tile" id="md-tile-divide" draggable="true" data-tile-type="operator" data-value="÷">÷</div>
+                <div class="tile" id="md-tile-4" draggable="true" data-tile-type="number" data-value="4">4</div>
+            </div>
+        </div>
+
+        <div class="page-controls">
+            <button class="nav-btn prev-page">&lt; Previous</button>
+            <button class="nav-btn next-page" disabled>Next &gt;</button>
+        </div>
+    </div>
+
+</div>
